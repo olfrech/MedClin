@@ -53,3 +53,5 @@ atendimento/
 ├── urls.py                  # apenas para manipular, sem regras complexas
 ├── admin.py
 ```
+
+Tem arquivos __initi__.py em várias pastas, mas são somente para que o git pudesse levar elas sem ignorar.
