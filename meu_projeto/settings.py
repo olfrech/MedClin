@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'apps.cadastros.apps.CadastrosConfig',
 ]
 
 MIDDLEWARE = [
@@ -51,10 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'meu_projeto.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,8 +78,12 @@ WSGI_APPLICATION = 'meu_projeto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'medclin',
+        'USER': 'medclin_user',
+        'PASSWORD': 'medclin123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
