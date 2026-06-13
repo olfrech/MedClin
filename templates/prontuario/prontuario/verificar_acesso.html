@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>{{ titulo }}</h2>
+
+<form method="get">
+  {{ form.as_p }}
+
+  <button type="submit">Verificar</button>
+
+  <a href="{% url 'prontuario:prontuario_detalhe' prontuario.idProntuario %}">
+    Voltar para o prontuário
+  </a>
+</form>
+
+<hr />
+
+{% if resultado %}
+<p>
+  Perfil <strong>{{ resultado.perfil }}</strong>, profissional
+  <strong>{{ resultado.idProfissional }}</strong>:
+  {% if resultado.tem_acesso %}
+  <strong>ACESSO AUTORIZADO</strong>
+  {% else %}
+  <strong>ACESSO NEGADO</strong>
+  {% endif %}
+</p>
+{% endif %} {% endblock %}
