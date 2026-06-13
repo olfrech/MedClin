@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>{{ titulo }}</h2>
+
+<p>
+  <a href="{% url 'prontuario:prontuario_inicializar' %}">
+    Inicializar novo prontuário
+  </a>
+</p>
+
+{% if prontuarios %}
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Data de criação</th>
+      <th>Diagnóstico</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for prontuario in prontuarios %}
+    <tr>
+      <td>{{ prontuario.idProntuario }}</td>
+      <td>{{ prontuario.dataCriacao|date:"d/m/Y H:i" }}</td>
+      <td>{{ prontuario.diagnostico|default:"-"|truncatechars:60 }}</td>
+      <td>
+        <a href="{% url 'prontuario:prontuario_detalhe' prontuario.idProntuario %}">
+          Visualizar
+        </a>
+        |
+        <a href="{% url 'prontuario:prontuario_registrar_evolucao' prontuario.idProntuario %}">
+          Registrar evolução
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum prontuário cadastrado.</p>
+{% endif %} {% endblock %}
